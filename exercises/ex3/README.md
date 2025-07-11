@@ -791,4 +791,4 @@ You are now able to:
 -	Define value helps for OData entities   
 
 
-Continue to - [Exercise 4 - Excercise 4 ](../ex4/README.md/#exercise-4---consume-a-soap-web-service)
+<!--Continue to - [Exercise 4 - Excercise 4 ](../ex4/README.md/#exercise-4---consume-a-soap-web-service)-->
