@@ -30,7 +30,7 @@ This hands-on workshop will guide you to build side-by-side extensions for an SA
 
 ![architecture](images/000_Overview_side_by_side.png)
 
-You will create your own transactional Fiori elements app with the ABAP RESTful Application Programming Model (RAP) and use remote enabled APIs (an OData service and a SOAP Web Service)provided by an SAP backend system to leverage existing data in SAP S/4HANA thereby extending existing functionality side-by-side in a Steampunk system.
+You will create your own transactional Fiori elements app with the ABAP RESTful Application Programming Model (RAP) and use remote enabled APIs such as the OData service [Product Master Data Including Classification - Read - Service](https://api.sap.com/api/API_CLFN_PRODUCT_SRV/overview)provided by an SAP S/4HANA public cloud system to leverage existing data in SAP S/4HANA thereby extending existing functionality side-by-side in a Steampunk system.
  
 In order to be able to build this scenario in the shared trial systems an OData service will be used that can be consumed using a pre-configured communication arrangement that uses a SAP S/4HANA public cloud.
 

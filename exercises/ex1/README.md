@@ -241,7 +241,7 @@ define table zrap620_inven### {
    Below is a brief explanation of the generated artefacts for the different RAP layers: Base BO, BO Projection, and Business Service.
 
 ---
-  **Base Business Object (BO) `ZR_RAP620_INVEN###`** 
+  **Base Business Object (BO) `ZR_INVENTORY###`** 
   
    | **Object Name**               |  **Description**         |     
    |:----------------------------- |:------------------------ |
@@ -291,9 +291,13 @@ define table zrap620_inven### {
 
       ![Preview App](images/preview_app_0000.png)
    
-   2. Double-click on the entity **`Inventory`** in the **Entity Set and Association** section to open the _Fiori elements App Preview_ and press the **Go** button.
+   2. Double-click on the entity **`Inventory`** in the **Entity Set and Association** section to open the _Fiori elements App Preview_ 
    
-      When you click the **Go** button off your_Inventory_ app you will notice that nothing is being displayed because no inventory data has been created yet. You will get the hint  
+      ![Preview App](images/preview_app_0010.png)
+
+   3. Press the **Go** button.
+   
+      When you click the **Go** button off your _Inventory_ app you will notice that nothing is being displayed because no inventory data has been created yet. You will get the hint  
    
       _No data found._   
 
@@ -303,9 +307,9 @@ define table zrap620_inven### {
    4. Press the **Create** button.
 
       Using the create button we can in principle create data without performing any additional implementations. 
-      However as you would see, there is not business logic in place that would prevent you from entering meaningless data.  
-      Also administrative fields are displayed which you would probaly not like to be displayed all in a productive appliacation.
-      We will fix this by removing certain ````@UI.lineitem.label```` and ````@UI.identification.label```` annotations in the following exercise  **[Exercise 2: Adapt the generated code](../ex2/README.md)**.  
+      However, there is no business logic in place that would prevent you from entering meaningless data.  
+      Also administrative fields are displayed which you would probaly not like to be displayed in a productive appliacation.
+      We will fix this by removing certain `@UI.lineitem.label` and `@UI.identification.label` annotations in the following exercise  **[Exercise 2: Adapt the generated code](../ex2/README.md)**.  
       In this exercise we will also implement a determination that calculates a semantic key for the **InventoryID**.   
 
       ![Preview App](images/preview_app_0030.png)

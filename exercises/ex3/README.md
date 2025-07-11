@@ -34,30 +34,27 @@ Since this information resides in a SAP S/4 HANA public cloud backend we will re
 >  
 > In order to be able to build such a side-by-side extension on the SAP BTP ABAP Environment trial systems which are shared systems we have to use pre-configured communication arrangements that allow us to consume OData services in a shared SAP S/4HANA Cloud Demo System that has been setup as a demo backend system for the SAP BTP trial.
 
-## Download the OData API Specification of the Product Master Data Including Classification - Read - Service
-
-
-
 
 ## Create the Service Consumption Model
 [^Top of page](#)  
 
 In this step we will generate a so called **Service Consumption Model**. This type of object takes an external interface description as its input. Currently *OData*, *SOAP* and *RFC* are supported.  
 
-Based on the information found in the *$metadata* file or the *wsdl* file appropriate repository objects are generated (OData Client proxy or SOAP proxy objects). For services that are available in SAP S/4HANA systems this information can be downloaded from the **SAP Business Accelerator Hub** as shown in the previous exercise.   
+Based on the information found in the *$metadata* file or the *wsdl* file appropriate repository objects are generated (OData Client proxy or SOAP proxy objects). For services that are available in SAP S/4HANA systems this information can be downloaded from the **SAP Business Accelerator Hub**.    
 
 For RFC function modules the metadata file is created in the backend using the transaction *ACO_PROXY*.  
 
 Using these objects you will be able to write ABAP code that lets you consume remote OData services, SOAP services or RFC function modules.
 
 > ⚠️ Please note
-> The shared SAP S/4HANA public cloud demo system that is used in this case only allows to use a few services that are part of this demo scripts. In order to have access to a full blown SAP S/4HANA public cloud system please check out this [link](https://www.sap.com).  
+> The shared SAP S/4HANA public cloud demo system that is used in this case only allows to use a few services that are part of this demo scripts. In order to have access to a full blown SAP S/4HANA public cloud system please check out this [link](https://www.sap.com/products/erp/s4hana/trial.html).    
 
 <details>
 <summary>Click to expand</summary>
 
 We start by creating a service consumption model for an OData service that provides demo product data. This service resides on a shared SAP S/4HANA public cloud demo system. The connectivity based on a so called communication arrangement has been preconfigured in all shared SAP BTP ABAP Environment systems for your convenience. 
 
+### Download metadata from the SAP Business Accelerator Hub
 
 1. The *$metadata* file of the OData service that we want to consume must be uploaded in file format. You have hence to download it first.
 
@@ -72,11 +69,13 @@ We start by creating a service consumption model for an OData service that provi
 
    ![Business_accelerator_hub](./images/business_accelerator_hub_0010.png).
 
-4. Switch to ADT and right click on your package **ZRAP620_###**. Select **New > Other ABAP Repository Object**.  
+#### Generate the Service Consumption Model      
+
+1. Switch to ADT and right click on your package **ZRAP620_###**. Select **New > Other ABAP Repository Object**.  
 
     ![New ABAP Repository Object 1](images/Service_Consumption_Model_0030.png)  
 
-5. In the **New ABAP Repository Object** dialogue do the following
+2. In the **New ABAP Repository Object** dialogue do the following
 
    -  Start to type **`Service`**
    -  In the list of objects select **Service Consumption Model**
@@ -84,7 +83,7 @@ We start by creating a service consumption model for an OData service that provi
  
       ![New ABAP Repository Object 2](images/Service_Consumption_Model_0040.png)
 
-6. The **New Service Consumption Model** dialogue opens. Here enter the following data:
+3. The **New Service Consumption Model** dialogue opens. Here enter the following data:
 
    - Name: **`ZSC_PRODUCTS_###`**
    - Description: **`Products from S4`**
@@ -98,7 +97,7 @@ We start by creating a service consumption model for an OData service that provi
    
     ![New Service Consumption Model](images/Service_Consumption_Model_0050.png)
 
-5. The $metadata file of the OData service that we want to consume must be uploaded in file format. If you have not yet downloaded the $metadata file you have to do this now.
+4. The $metadata file of the OData service that we want to consume must be uploaded in file format. If you have not yet downloaded the $metadata file you have to do this now.
 
    - Click **Browse** to select the $metadata file **API_CLFN_PRODUCT_SRV.edmx** that you have downloaded earlier in this exercise
    - Class Name: **`ZRAP620_SC_PRODUCTS_###`**    
@@ -108,7 +107,7 @@ We start by creating a service consumption model for an OData service that provi
 
  ![OData consumption proxy](images/Service_Consumption_Model_0060.png)
 
-6. Check the **Components of the OData Service** and click **Next**.
+5. Check the **Components of the OData Service** and click **Next**.
 
    You will notice that the **Product Master Data Including Classification - Read - Service** provides several entity sets and several entity types, e.g. `A_ClfnProduct` and `A_ClfnProductType`. 
 
@@ -116,27 +115,27 @@ We start by creating a service consumption model for an OData service that provi
 
    Press **Next**.
 
-7. The wizard will now let you choose for which entity sets support for etags should be added. We will not use this feature, since access to the service is just read-only as a value help.  
+6. The wizard will now let you choose for which entity sets support for etags should be added. We will not use this feature, since access to the service is just read-only as a value help.  
 
    ![Define Entity Set](images/Service_Consumption_Model_0070.png)
 
    Press **Next**.
 
-8. Selection of transport request
+7. Selection of transport request
    - Select or create a transport request
    - Press **Finish**
   
 
-9. When you check the content of your package you will notice that it contains two new objects. 
+8. When you check the content of your package you will notice that it contains two new objects. 
 
     -  The service consumption model
     -  The service consumption model class
 
     ![ABAP Artifacts](images/Service_Consumption_Model_0100.png)
 
-10. Select the Service Consumption Model and press the **Activate** button press or **Ctrl+F3**
+9. Select the Service Consumption Model and press the **Activate** button press or **Ctrl+F3**
 
-11. Let us briefly investigate the service consumption model.  
+10. Let us briefly investigate the service consumption model.  
 
    For each entity e.g. `A_ClfnProduct` and each operation (**Read List**, **Read**, **Create**, **Update** and **Delete**) some sample code has been created that you can use when you want to call the OData Service with one of these operations. Since we want to retrieve a list of Product-IDs, we will select the operation **Read List** and click on the button **Copy to Clipboard**. We will use this code in the following step where we create a console application to test the call to the remote OData service. 
   
@@ -338,7 +337,7 @@ ENDCLASS.
 [^Top of page](#)
 
 Since we want to use the results of the remote OData service in our managed inventory app we will create a custom entity. 
-The syntax of a custom entity differs from the one used in normal CDS views but is very similar to the syntax of an abstract entity and we can thus reuse most of the DDL source code of the abstract entity that has been generated when the service consumption model was created.
+The syntax of a custom entity differs from the one used in normal CDS views but is very similar to the syntax of an abstract entity, table or a structure.
 
 In order to leverage the remote OData service in our application we have to perform two steps.
 
@@ -423,18 +422,18 @@ define custom entity ZCE_PRODUCTS_###
 
 </pre>
 
-   [Source code ZRAP620_CE_PRODUCTS_###](sources/ex2_DDLS_ZCE_RAP_PRODUCTS_%23%23%23%23.txt)
+   [Source code ZCE_PRODUCTS_###](sources/ex2_DDLS_ZCE_RAP_PRODUCTS_%23%23%23%23.txt)
 
 7. Activate your changes ![Activate](images/activate.png)
 
-> You might get the warning that the class ` ZRAP620_CE_PRODUCTS_###` is not found. This is because our class does not yet implement the interface `IF_RAP_QUERY_PROVIDER`.  
+> You might get the warning that the class ` ZCE_PRODUCTS_###` is not found. This is because our class does not yet implement the interface `IF_RAP_QUERY_PROVIDER`.  
 
 ### Hints for creating the custom entity based on the type **`tys_sepmra_i_product_etype`**
 [^Top of page](#)
 
 In the above code sample we just added three fields to our custom entity.
 
-When checking the source code of the *Service Consumption Provider Model* class we find in the public section the type defintion **`ttys_a_clfn_product_type`** which contains the ABAP internal representation of the data.
+When checking the source code of the *Service Consumption Provider Model* class we find in the public section the type defintion **`tys_a_clfn_product_type`** which contains the ABAP internal representation of the data and a corresponding type **`tyt_a_clfn_product_type`** for storing this data as a table.
 
 <pre>
   TYPES:
@@ -676,10 +675,6 @@ It is mandatory that the response not only contains the retrieved data via the m
 
 3. Activate your changes 
 
-4. Your ABAP source code should now look like follows
-
-[Source code ZCL_CE_RAP_PRODUCTS_####](sources/ex2_CLAS_zcl_ce_rap_products_%23%23%23%23_final.txt)
-
 </details>
 
 </details>
@@ -691,7 +686,7 @@ We now have to add the custom entity to the service definition of our inventory 
 <details>
 <summary>Click to expand</summary>
 
-1. Open the Service Definition `ZZUI_INVENTORY_O4###` 
+1. Open the Service Definition `ZUI_INVENTORY_O4###` 
 
    - add the statement  
      <pre>expose ZCE_PRODUCTS_### as Product;</pre>  
@@ -732,7 +727,7 @@ We can now test our service implementation.
 <details>
 <summary>Click to expand</summary>
 
-1. Open the service binding `ZRAP620_UI_INVENTOR_O4_###` 
+1. Open the service binding `ZUI_INVENTORY_O4###` 
 
    - You will notice that now two entities are visible. `Products` and `Inventory`
    - Double-click on the entity `Inventory` or select it and use the **Preview** button.
@@ -769,17 +764,17 @@ We can now test our service implementation.
 
 2. Change the product name to a product name that does not exist, e.g. by adding an arbritray character `a`.
 
-   You will see that the SAP Fiori Elements UI performs a check whether the entered product name `HT-1001a`does exist.
+   You will see that the SAP Fiori Elements UI performs a check whether the entered product name `A001a`does exist.
 
    This is because we have add earlier the annotation `@Consumption.valueHelpDefinition` to the field `ProductID` with the addtional parameter `useForValidation`.
 
 <pre>
-@Consumption.valueHelpDefinition: [{ entity : {name: 'ZRAP620_CE_PRODUCTS_AF3', element: 'Product'  } , useForValidation: true }]        
+@Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]        
 </pre>
 
-   ![Input validation 1](images/preview_service_0030.png)
+   ![Input validation](images/preview_service_0030.png)
 
-   ![Input validation 2](images/preview_service_0040.png)
+   
 
   
 </details>
