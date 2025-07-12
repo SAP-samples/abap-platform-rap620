@@ -10,9 +10,8 @@ We will use a structure as a template for the **inventory** entity. Afterwards y
 
 - [1.1 - Create Package](#exercise-11-create-package)
 - [1.2 - Create structure](#exercise-12-create-structure)
-- [1.3 - Generate the transactional UI services](#exercise-13-generate-the-transactional-ui-services)
-- [1.4 - Adapt the generated code](#exercise-14-adapt-the-generated-code)
-- [1.5 - Preview the Travel App](#exercise-15-preview-the-inventory-app)
+- [1.3 - Generate the transactional UI services](#exercise-13-generate-the-transactional-ui-service)
+- [1.4 - Preview the Inventory App](#exercise-14-preview-the-inventory-app)
 - [Summary](#summary)
 - [Appendix](#appendix)
 
@@ -182,7 +181,7 @@ define table zrap620_inven### {
 
 -->
 
-## Exercise 1.3: Generate the transactional UI services
+## Exercise 1.3: Generate the transactional UI service
 [^Top of page](#)
 
 > Create your OData v4 based UI services with the built-in _from scratch generator_ in ADT.   
