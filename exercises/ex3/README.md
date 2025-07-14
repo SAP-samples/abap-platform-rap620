@@ -201,7 +201,7 @@ This is a useful additional step since this way it is easier to check whether th
 
    So the `DEFINITION` section of your class should now look like follows:
 
-<pre>
+```ABAP
     CLASS zcl_ce_products_### DEFINITION
      PUBLIC
      FINAL
@@ -227,7 +227,7 @@ This is a useful additional step since this way it is easier to check whether th
     PROTECTED SECTION.
     PRIVATE SECTION.
     ENDCLASS.
-</pre>
+```
 
    You will get a warning that the method **get_products( )** has not been implemented yet. Press **Ctrl+1** to start the quick fix to add an implementation for **get_products( )**.
 
@@ -245,7 +245,7 @@ This is a useful additional step since this way it is easier to check whether th
    > Please note
    > In a normal SAP BTP ABAP Environment system one would have to create an communication scenario and a communication arrangement to consume the product classification OData service from your own SAP S/4HANA public cloud system.
 
-   <pre>
+   ```ABAP
 
     METHOD get_products.
     DATA filter_factory     TYPE REF TO /iwbep/if_cp_filter_factory.
@@ -300,13 +300,13 @@ This is a useful additional step since this way it is easier to check whether th
     ENDMETHOD.
 
 
-   </pre>
+   ```
 
 8. Finally we add the following code into the **IMPLEMENTATION** section of your **main** method
 
    The main method creates a simple filter for products with a name greater or equal **TG11**. At the same time we use client side paging to skip the first result and limit the response to 3 products.
 
-   <pre>
+   ```ABAP
     METHOD if_oo_adt_classrun~main.
 
     DATA business_data     TYPE t_business_data.
@@ -326,7 +326,7 @@ This is a useful additional step since this way it is easier to check whether th
         out->write( cl_message_helper=>get_latest_t100_exception( exception )->if_message~get_longtext( ) ).
     ENDTRY.
     ENDMETHOD.
-   </pre>
+   ```
 
 
 9. You can now run the console application by pressing **F9**.
@@ -408,7 +408,7 @@ Let’s start with creating a new data definition `ZCE_PRODUCTS_###` using the t
 
     The DDL source code should now look like follows:  
 
-   <pre>
+   ```ABAP
 @EndUserText.label: 'Custom entity for products from S4'
 @ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_PRODUCTS_###'
 define custom entity ZCE_PRODUCTS_###
@@ -422,7 +422,7 @@ define custom entity ZCE_PRODUCTS_###
 }
 
 
-   </pre>
+   ```
 
    [Source code ZCE_PRODUCTS_###](sources/ex2_DDLS_ZCE_RAP_PRODUCTS_%23%23%23%23.txt)
 
@@ -442,17 +442,17 @@ After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance
  
    - You can use the quick fix `Ctrl+1` to add the implementation for the method `if_rap_query_provider~select`
   
-   <pre>
+   ```ABAP
   INTERFACES if_rap_query_provider.
-   </pre>
+   ```
   
   ![Add interface IF_RAP_QUERY_PROVIDER](images/query_implementation_0010.png)
   
 2. Add the following types statement
 
-   <pre>
+   ```ABAP
   TYPES t_business_data_external TYPE TABLE OF zce_products_###.
-   </pre>
+   ```
 
 2. Implement the method  `if_rap_query_provider~select`  
   
@@ -463,7 +463,7 @@ After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance
 
    [Source code zcl_ce_rap_products_####](sources/ex2_CLAS_zcl_ce_rap_products_%23%23%23%23_step_2.txt)
 
-  <pre>
+  ```ABAP
 
   METHOD if_rap_query_provider~select.
     DATA business_data          TYPE t_business_data.
@@ -497,7 +497,7 @@ After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance
   ENDMETHOD.
 
  
-  </pre>
+  ```
 
 3. Activate your changes 
 
@@ -513,7 +513,7 @@ When checking the source code of the *Service Consumption Provider Model* class 
 <details>
 
   
-<pre>
+```ABAP
   TYPES:
       "! <p class="shorttext synchronized">A_ClfnProductType</p>
       BEGIN OF tys_a_clfn_product_type,
@@ -651,7 +651,7 @@ When checking the source code of the *Service Consumption Provider Model* class 
 
 
 
-</pre>
+```
 
   >
   > In addition we need the mapping information which can be found in the method **`def_a_clfn_product_type`**. 
@@ -694,7 +694,7 @@ We now have to add the custom entity to the service definition of our inventory 
 1. Open the Service Definition `ZUI_INVENTORY_O4###` 
 
    - add the statement  
-     <pre>expose ZCE_PRODUCTS_### as Product;</pre>  
+     ```ABAPexpose ZCE_PRODUCTS_### as Product;```  
      so that the custom entity is added to the OData service.  
    - Activate your changes ![Activate](images/activate.png)
  
@@ -773,9 +773,9 @@ We can now test our service implementation.
 
    This is because we have add earlier the annotation `@Consumption.valueHelpDefinition` to the field `ProductID` with the addtional parameter `useForValidation`.
 
-   <pre>
+   ```ABAP
    @Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]        
-   </pre>
+   ```
 
    ![Input validation](images/preview_service_0030.png)
 
