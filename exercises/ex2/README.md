@@ -1,5 +1,4 @@
-# TOC
-[Home](../../readme.md#exercises)
+[Home - RAP100](../../#exercises)
 
 # Adapt the generated code
 
@@ -11,7 +10,7 @@ Here we will make the semantic key field **InventoryID** _read_only_ and we will
 
 ### Behavior definition
 
-Open the behavior defintion ````ZR_INVENTORY### ```` and add the field **InventoryID** to the list of fields that are marked as readonly and add a determination **CalculateInventoryID** for the field **InventoryID**.
+Open the behavior defintion `ZR_INVENTORY###` and add the field **InventoryID** to the list of fields that are marked as readonly and add a determination **CalculateInventoryID** for the field **InventoryID**.
 
 <details>
   <summary>Click to expand the steps ...</summary>
@@ -46,7 +45,7 @@ determination CalculateInventoryID on save { create; }
 
 4. Click on the warning icon 
 
-5. Choose the quick fix **add method for determination caculateinventoryid of entity ZRAP620_R_INVENTORYTP_###**  
+5. Choose the quick fix **add method for determination caculateinventoryid of entity ZR_INVENTORY###**  
 
    ![Open Behavior Implementation](images/bdef_add_determination_0010.png)
    
@@ -60,8 +59,8 @@ determination CalculateInventoryID on save { create; }
 
 ## Behavior implementation
 
-The behavior implementation class ````ZRAP620_BP_INVENTORYTP_###```` is automatically opened with the tab **Local Types** for the local handler class ````lcl_handler```` .
-The quick fix has added a method ````CalculateInventoryID```` with an (empty) implementation for the determination that shall calculate the semantic key InventoryID. 
+The behavior implementation class `ZBP_R_INVENTORY###` is automatically opened with the tab **Local Types** for the local handler class `lcl_handler` .
+The quick fix has added a method `CalculateInventoryID` with an (empty) implementation for the determination that shall calculate the semantic key InventoryID. 
 
 <details>
   <summary>Click to expand the steps ...</summary>
