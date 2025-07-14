@@ -697,7 +697,7 @@ We now have to add the custom entity to the service definition of our inventory 
      ```  
 
      so that the custom entity is added to the OData service.  
-     
+
    - Activate your changes ![Activate](images/activate.png)
  
   ![Add custom entity to service definition](images/service_definition_0000.png)  
@@ -787,7 +787,7 @@ We can now test our service implementation.
 </details>
 
 ## Summary
-[^Top of page](#)
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)   
 
 You are now able to:
 
@@ -799,5 +799,6 @@ You are now able to:
 
 and have finished this hands-on script.  
 
+[Home - RAP620](../../#exercises)   
 
 <!--Continue to - [Exercise 4 - Excercise 4 ](../ex4/README.md/#exercise-4---consume-a-soap-web-service)-->
