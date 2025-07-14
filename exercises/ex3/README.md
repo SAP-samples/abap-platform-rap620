@@ -247,7 +247,7 @@ ENDCLASS.
    > Please note
    > In a normal SAP BTP ABAP Environment system one would have to create an communication scenario and a communication arrangement to consume the product classification OData service from your own SAP S/4HANA public cloud system.
 
-<pre>
+   <pre>
 
  METHOD get_products.
     DATA filter_factory     TYPE REF TO /iwbep/if_cp_filter_factory.
@@ -302,13 +302,13 @@ ENDCLASS.
   ENDMETHOD.
 
 
-</pre>
+   </pre>
 
 8. Finally we add the following code into the **IMPLEMENTATION** section of your **main** method
 
-  The main method creates a simple filter for products with a name greater or equal **TG11**. At the same time we use client side paging to skip the first result and limit the response to 3 products.
+   The main method creates a simple filter for products with a name greater or equal **TG11**. At the same time we use client side paging to skip the first result and limit the response to 3 products.
 
-<pre>
+   <pre>
   METHOD if_oo_adt_classrun~main.
 
     DATA business_data     TYPE t_business_data.
@@ -328,7 +328,7 @@ ENDCLASS.
         out->write( cl_message_helper=>get_latest_t100_exception( exception )->if_message~get_longtext( ) ).
     ENDTRY.
   ENDMETHOD.
-</pre>
+   </pre>
 
 
 9. You can now run the console application by pressing **F9**.
@@ -408,9 +408,9 @@ Let’s start with creating a new data definition `ZCE_PRODUCTS_###` using the t
    - From the remote OData service that is used by the service consumption model we only use the following three fields for your value help: `Product`, `ProductType` and `ProductGroup`.
    - We add the annotation `@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_PRODUCTS_###'` right before the `define custom entity` statement.
 
-The DDL source code should now look like follows:
+    The DDL source code should now look like follows:  
 
-<pre>
+   <pre>
 @EndUserText.label: 'Custom entity for products from S4'
 @ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_PRODUCTS_###'
 define custom entity ZCE_PRODUCTS_###
@@ -424,7 +424,7 @@ define custom entity ZCE_PRODUCTS_###
 }
 
 
-</pre>
+   </pre>
 
    [Source code ZCE_PRODUCTS_###](sources/ex2_DDLS_ZCE_RAP_PRODUCTS_%23%23%23%23.txt)
 
@@ -444,28 +444,28 @@ After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance
  
    - You can use the quick fix `Ctrl+1` to add the implementation for the method `if_rap_query_provider~select`
   
-<pre>
+   <pre>
   INTERFACES if_rap_query_provider.
-</pre>
+   </pre>
   
   ![Add interface IF_RAP_QUERY_PROVIDER](images/query_implementation_0010.png)
   
 2. Add the following types statement
 
-<pre>
+   <pre>
   TYPES t_business_data_external TYPE TABLE OF zce_products_###.
-</pre>
+   </pre>
 
 2. Implement the method  `if_rap_query_provider~select`  
   
-Within the `select()` method we can retrieve the details of the incoming OData call using the object `io_request`. Using the method `get_paging()` we can find out whether client side paging was requested with the incoming OData call. Using the method `get_filter()` we can retrieve the filter that was used by the incoming OData request as ranges. This comes in handy so we can provide this data when calling the method `get_products()`.
+   Within the `select()` method we can retrieve the details of the incoming OData call using the object `io_request`. Using the method `get_paging()` we can find out whether client side paging was requested with the incoming OData call. Using the method `get_filter()` we can retrieve the filter that was used by the incoming OData request as ranges. This comes in handy so we can provide this data when calling the method `get_products()`.
 
-**Please note:**
-It is mandatory that the response not only contains the retrieved data via the method `set_data()` but also the number of entities being returned via the method `set_total_number_of_records()`.
+   > **Please note:**
+   > It is mandatory that the response not only contains the retrieved data via the method `set_data()` but also the number of entities being returned via the method `set_total_number_of_records()`.
 
-[Source code zcl_ce_rap_products_####](sources/ex2_CLAS_zcl_ce_rap_products_%23%23%23%23_step_2.txt)
+   [Source code zcl_ce_rap_products_####](sources/ex2_CLAS_zcl_ce_rap_products_%23%23%23%23_step_2.txt)
 
- <pre>
+  <pre>
 
   METHOD if_rap_query_provider~select.
     DATA business_data          TYPE t_business_data.
@@ -499,7 +499,7 @@ It is mandatory that the response not only contains the retrieved data via the m
   ENDMETHOD.
 
  
- </pre>
+  </pre>
 
 3. Activate your changes 
 
@@ -514,6 +514,7 @@ When checking the source code of the *Service Consumption Provider Model* class 
 
 <details>
 
+  
 <pre>
   TYPES:
       "! <p class="shorttext synchronized">A_ClfnProductType</p>
