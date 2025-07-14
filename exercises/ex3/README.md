@@ -203,12 +203,12 @@ This is a useful additional step since this way it is easier to check whether th
 
    <pre>
 
-CLASS zcl_ce_products_### DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+   CLASS zcl_ce_products_### DEFINITION
+   PUBLIC
+   FINAL
+   CREATE PUBLIC .
 
-  PUBLIC SECTION.
+   PUBLIC SECTION.
     INTERFACES if_oo_adt_classrun.
 
     TYPES t_product_range TYPE RANGE OF zsc_products_###=>tys_a_clfn_product_type.
@@ -225,9 +225,9 @@ CLASS zcl_ce_products_### DEFINITION
                 cx_http_dest_provider_error.
 
 
-  PROTECTED SECTION.
-  PRIVATE SECTION.
-ENDCLASS.
+   PROTECTED SECTION.
+   PRIVATE SECTION.
+   ENDCLASS.
 
    </pre>
 
@@ -249,7 +249,7 @@ ENDCLASS.
 
    <pre>
 
- METHOD get_products.
+   METHOD get_products.
     DATA filter_factory     TYPE REF TO /iwbep/if_cp_filter_factory.
     DATA filter_node        TYPE REF TO /iwbep/if_cp_filter_node.
     DATA root_filter_node   TYPE REF TO /iwbep/if_cp_filter_node.
@@ -299,7 +299,7 @@ ENDCLASS.
     " Execute the request and retrieve the business data
     read_list_response = read_list_request->execute( ).
     read_list_response->get_business_data( IMPORTING et_business_data = business_data ).
-  ENDMETHOD.
+   ENDMETHOD.
 
 
    </pre>
