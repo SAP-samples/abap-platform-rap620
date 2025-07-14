@@ -12,8 +12,8 @@ We will use a structure as a template for the **inventory** entity. Afterwards y
 - [1.2 - Create structure](#exercise-12-create-structure)
 - [1.3 - Generate the transactional UI services](#exercise-13-generate-the-transactional-ui-service)
 - [1.4 - Preview the Inventory App](#exercise-14-preview-the-inventory-app)
-- [Summary](#summary)
-- [Appendix](#appendix)
+- [Summary](#summary)  
+
 
 
 > **Reminder:**   

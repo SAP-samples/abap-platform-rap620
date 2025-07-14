@@ -1,6 +1,5 @@
-# TOC
-[Home - RAP620](../../#exercises)
 # Exercise 3: Consume a remote API based on an OData service
+[Home - RAP620](../../#exercises)
 
 ## Introduction
 
@@ -11,16 +10,20 @@ The data will be used to build a value help to fetch product master data for the
 
 In this exercise, you will ...
 
-- [Create a Service Consumption Model for the Product Master Data Including Classification - Read Service](#create-the-service-consumption-model)
+- [3.1. - Create a Service Consumption Model for the Product Master Data Including Classification - Read Service](#exercise-31-create-the-service-consumption-model)
+  - [3.1.1 Download Metadata from the SAP Business Accelerator Hub](#exercise-311-download-metadata-from-the-sap-business-accelerator-hub)
+  - [3.1.2 Generate the Service Consumption Model](#exercise-312-generate-the-service-consumption-model)          
 
-- [Create a console application to test the OData Service call](#create-a-console-application-to-test-the-odata-service)
+- [3.2. - Create a console application to test the OData Service](#exercise-32-create-a-console-application-to-test-the-odata-service)
+  
 
-- [Create a custom entity and implement the query implementation class](#create-a-custom-entity-and-implement-the-query-implementation-class)
-  - [Create a custom entity](#create-a-custom-entity)
-  - [Implement the query implemenation class](#implement-the-query-implemenation-class-zrap620ceproducts)   
+- [3.3. - Create a custom entity and implement the query implementation class](#exercise-33-create-a-custom-entity-and-implement-the-query-implementation-class)
+  - [3.3.1 - Create a custom entity](#exercise-331-create-a-custom-entity)
+  - [3.3.2 - Implement the query implemenation class](#exercise-332-implement-the-query-implemenation-class)   
 
-- [Add the custom entity as a value help](#add-the-custom-entity-as-a-value-help)
-- [Test the service](#test-the-service)
+- [3.4. - Add the custom entity to your Service Defintion](#exercise-34-add-the-custom-entity-to-your-service-definition)
+- [3.5. - Add the custom entity as a value help](#exercise-35-add-the-custom-entity-as-a-value-help)
+- [3.6. - Test the service](#exercise-36-test-the-service)
 - [Summary](#summary) 
 
 
@@ -35,8 +38,8 @@ Since this information resides in a SAP S/4 HANA public cloud backend we will re
 > In order to be able to build such a side-by-side extension on the SAP BTP ABAP Environment trial systems which are shared systems we have to use pre-configured communication arrangements that allow us to consume OData services in a shared SAP S/4HANA Cloud Demo System that has been setup as a demo backend system for the SAP BTP trial.
 
 
-## Create the Service Consumption Model
-[^Top of page](#)  
+## Exercise 3.1: Create the Service Consumption Model
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)    
 
 In this step we will generate a so called **Service Consumption Model**. This type of object takes an external interface description as its input. Currently *OData*, *SOAP* and *RFC* are supported.  
 
@@ -54,7 +57,8 @@ Using these objects you will be able to write ABAP code that lets you consume re
 
 We start by creating a service consumption model for an OData service that provides demo product data. This service resides on a shared SAP S/4HANA public cloud demo system. The connectivity based on a so called communication arrangement has been preconfigured in all shared SAP BTP ABAP Environment systems for your convenience. 
 
-### Download metadata from the SAP Business Accelerator Hub
+### Exercise 3.1.1: Download metadata from the SAP Business Accelerator Hub
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 1. The *$metadata* file of the OData service that we want to consume must be uploaded in file format. You have hence to download it first.
 
@@ -69,7 +73,8 @@ We start by creating a service consumption model for an OData service that provi
 
    ![Business_accelerator_hub](./images/business_accelerator_hub_0010.png).
 
-#### Generate the Service Consumption Model      
+### Exercise 3.1.2: Generate the Service Consumption Model      
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 1. Switch to ADT and right click on your package **ZRAP620_###**. Select **New > Other ABAP Repository Object**.  
 
@@ -143,8 +148,8 @@ We start by creating a service consumption model for an OData service that provi
 
 </details>
 
-## Create a console application to test the OData service
-[^Top of page](#)
+## Exercise 3.2: Create a console application to test the OData service
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 We can now test the service consumption model by creating a small console application `ZCL_CE_PRODUCTS_###` that implements the interface `if_oo_adt_classrun`. 
 This is a useful additional step since this way it is easier to check whether the OData consumption works and debugging a console application is much easier than trying out your coding in the full fledged RAP business object.
@@ -184,8 +189,8 @@ This is a useful additional step since this way it is easier to check whether th
 
 ![Selection of transport request](images/console_app_0040.png)
 
-## CLASS ZRAP620_CL_CE_PRODUCTS_### - Implementation
-[^Top of page](#)  
+### Implementation
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 1. Let's start with the implementation of our test class. 
 
@@ -230,7 +235,7 @@ ENDCLASS.
 
    ![Add implementation](images/console_app_0050.png)
 
-6. Now we will add code in the **IMPLEMENTATION** section of the method **get_products( )**. 
+2. Now we will add code in the **IMPLEMENTATION** section of the method **get_products( )**. 
 
    The public method **get_products( )** is used to retrieve the data from the remote OData service. Since preconfigured communication arrangements have been provided in the trial systems, we will use the method **cl_http_destination_provider=>create_by_comm_arrangement** which allows us to create a http destination object based on the aforementioned communication arrangement. 
    
@@ -333,8 +338,10 @@ ENDCLASS.
 
 </details>
 
-## Create a custom entity and implement the query implementation class
-[^Top of page](#)
+</details>
+
+## Exercise 3.3: Create a custom entity and implement the query implementation class
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 Since we want to use the results of the remote OData service in our managed inventory app we will create a custom entity. 
 The syntax of a custom entity differs from the one used in normal CDS views but is very similar to the syntax of an abstract entity, table or a structure.
@@ -347,8 +354,8 @@ In order to leverage the remote OData service in our application we have to perf
 <details>
 <summary>Click to expand</summary>
 
-### Create a custom entity
-[^Top of page](#)
+### Exercise 3.3.1: Create a custom entity
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 In contrast to "normal" CDS views that read data from the database from tables or other CDS views _custom entities_ act as a wrapper for a code based implementation that provides the data instead of a database table or a CDS view. 
 
@@ -428,12 +435,91 @@ define custom entity ZCE_PRODUCTS_###
 
 > You might get the warning that the class ` ZCE_PRODUCTS_###` is not found. This is because our class does not yet implement the interface `IF_RAP_QUERY_PROVIDER`.  
 
-### Hints for creating the custom entity based on the type **`tys_sepmra_i_product_etype`**
-[^Top of page](#)
+</details>
+
+### Exercise 3.3.2: Implement the query implemenation class
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
+
+After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance the query implementation class `ZCE_PRODUCTS_###` that we have created earlier in this exercise.
+
+<details>
+<summary>Click to expand</summary>
+
+1. Add interface **`IF_RAP_QUERY_PROVIDER`** to the query implementation class **`ZCL_CE_PRODUCTS_###`**
+ 
+   - You can use the quick fix `Ctrl+1` to add the implementation for the method `if_rap_query_provider~select`
+  
+<pre>
+  INTERFACES if_rap_query_provider.
+</pre>
+  
+  ![Add interface IF_RAP_QUERY_PROVIDER](images/query_implementation_0010.png)
+  
+2. Add the following types statement
+
+<pre>
+  TYPES t_business_data_external TYPE TABLE OF zce_products_###.
+</pre>
+
+2. Implement the method  `if_rap_query_provider~select`  
+  
+Within the `select()` method we can retrieve the details of the incoming OData call using the object `io_request`. Using the method `get_paging()` we can find out whether client side paging was requested with the incoming OData call. Using the method `get_filter()` we can retrieve the filter that was used by the incoming OData request as ranges. This comes in handy so we can provide this data when calling the method `get_products()`.
+
+**Please note:**
+It is mandatory that the response not only contains the retrieved data via the method `set_data()` but also the number of entities being returned via the method `set_total_number_of_records()`.
+
+[Source code zcl_ce_rap_products_####](sources/ex2_CLAS_zcl_ce_rap_products_%23%23%23%23_step_2.txt)
+
+ <pre>
+
+  METHOD if_rap_query_provider~select.
+    DATA business_data          TYPE t_business_data.
+    DATA business_data_external TYPE t_business_data_external.
+
+    DATA(top)  = io_request->get_paging( )->get_page_size( ).
+    DATA(skip) = io_request->get_paging( )->get_offset( ).   
+    DATA(requested_fields) = io_request->get_requested_elements( ).
+    DATA(sort_order) = io_request->get_sort_elements( ).
+
+    TRY.
+        DATA(filter_condition) = io_request->get_filter( )->get_as_ranges( ).
+
+        get_products( EXPORTING filter_conditions = filter_condition
+                                top               = CONV i( top )
+                                skip              = CONV i( skip )
+                      IMPORTING business_data     = business_data ).
+
+        business_data_external = CORRESPONDING #( business_data
+                                          MAPPING Product = product
+                                                  ProductType = product_type
+                                                  ProductGroup = product_group ).
+
+        io_response->set_total_number_of_records( lines( business_data_external ) ).
+        io_response->set_data( business_data_external ).
+
+      CATCH cx_root INTO DATA(exception).
+        " TODO: variable is assigned but never used (ABAP cleaner)
+        DATA(exception_message) = cl_message_helper=>get_latest_t100_exception( exception )->if_message~get_longtext( ).
+    ENDTRY.
+  ENDMETHOD.
+
+ 
+ </pre>
+
+3. Activate your changes 
+
+</details>
+
+</details>
+
+### Hints for creating the custom entity based on the type **`tys_sepmra_i_product_etype`**   
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 In the above code sample we just added three fields to our custom entity.
 
 When checking the source code of the *Service Consumption Provider Model* class we find in the public section the type defintion **`tys_a_clfn_product_type`** which contains the ABAP internal representation of the data and a corresponding type **`tyt_a_clfn_product_type`** for storing this data as a table.
+
+<details>
 
 <pre>
   TYPES:
@@ -603,83 +689,10 @@ When checking the source code of the *Service Consumption Provider Model* class 
 </pre>
 
 </details>
-
-### Implement the query implemenation class ZRAP620_CE_PRODUCTS_###
-[^Top of page](#)
-
-After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance the query implementation class `ZCE_PRODUCTS_###` that we have created earlier in this exercise.
-
-<details>
-<summary>Click to expand</summary>
-
-1. Add interface **`IF_RAP_QUERY_PROVIDER`** to the query implementation class **`ZCL_CE_PRODUCTS_###`**
- 
-   - You can use the quick fix `Ctrl+1` to add the implementation for the method `if_rap_query_provider~select`
-  
-<pre>
-  INTERFACES if_rap_query_provider.
-</pre>
-  
-  ![Add interface IF_RAP_QUERY_PROVIDER](images/query_implementation_0010.png)
-  
-2. Add the following types statement
-
-<pre>
-  TYPES t_business_data_external TYPE TABLE OF zce_products_###.
-</pre>
-
-2. Implement the method  `if_rap_query_provider~select`  
-  
-Within the `select()` method we can retrieve the details of the incoming OData call using the object `io_request`. Using the method `get_paging()` we can find out whether client side paging was requested with the incoming OData call. Using the method `get_filter()` we can retrieve the filter that was used by the incoming OData request as ranges. This comes in handy so we can provide this data when calling the method `get_products()`.
-
-**Please note:**
-It is mandatory that the response not only contains the retrieved data via the method `set_data()` but also the number of entities being returned via the method `set_total_number_of_records()`.
-
-[Source code zcl_ce_rap_products_####](sources/ex2_CLAS_zcl_ce_rap_products_%23%23%23%23_step_2.txt)
-
- <pre>
-
-  METHOD if_rap_query_provider~select.
-    DATA business_data          TYPE t_business_data.
-    DATA business_data_external TYPE t_business_data_external.
-
-    DATA(top)  = io_request->get_paging( )->get_page_size( ).
-    DATA(skip) = io_request->get_paging( )->get_offset( ).   
-    DATA(requested_fields) = io_request->get_requested_elements( ).
-    DATA(sort_order) = io_request->get_sort_elements( ).
-
-    TRY.
-        DATA(filter_condition) = io_request->get_filter( )->get_as_ranges( ).
-
-        get_products( EXPORTING filter_conditions = filter_condition
-                                top               = CONV i( top )
-                                skip              = CONV i( skip )
-                      IMPORTING business_data     = business_data ).
-
-        business_data_external = CORRESPONDING #( business_data
-                                          MAPPING Product = product
-                                                  ProductType = product_type
-                                                  ProductGroup = product_group ).
-
-        io_response->set_total_number_of_records( lines( business_data_external ) ).
-        io_response->set_data( business_data_external ).
-
-      CATCH cx_root INTO DATA(exception).
-        " TODO: variable is assigned but never used (ABAP cleaner)
-        DATA(exception_message) = cl_message_helper=>get_latest_t100_exception( exception )->if_message~get_longtext( ).
-    ENDTRY.
-  ENDMETHOD.
-
- 
- </pre>
-
-3. Activate your changes 
-
 </details>
 
-</details>
-
-## Add the custom entity to your service definition
+## Exercise 3.4: Add the custom entity to your service definition
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)   
 
 We now have to add the custom entity to the service definition of our inventory application.   
 
@@ -697,8 +710,8 @@ We now have to add the custom entity to the service definition of our inventory 
 
 </details>
 
-## Add the custom entity as a value help
-[^Top of page](#)
+## Exercise 3.5: Add the custom entity as a value help
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 The custom entity can now be added as a value help.  
 
@@ -719,8 +732,8 @@ This will add the custom entity `ZCE_PRODUCTS_###` as a value help for the field
 
 </details>
 
-## Test the service 
-[^Top of page](#)
+## Exercise 3.6: Test the service 
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 We can now test our service implementation.
 
@@ -758,7 +771,7 @@ We can now test our service implementation.
   ![Product selected in object page](images/preview_service_0020.png)
 
 ## Test input Validation on the front end
-[^Top of page](#)
+[^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)   
 
 1. Edit the newly created inventory entry
 
@@ -789,6 +802,8 @@ You are now able to:
 -	Create and expose Custom Entites  
 -	Implement Custom Queries for Custom Entities  
 -	Define value helps for OData entities   
+
+and have finished this hands-on script.  
 
 
 <!--Continue to - [Exercise 4 - Excercise 4 ](../ex4/README.md/#exercise-4---consume-a-soap-web-service)-->

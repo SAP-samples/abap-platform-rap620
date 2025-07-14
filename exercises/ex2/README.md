@@ -4,6 +4,11 @@
 
 In this exercise we will perform changes to the generated code so that our generated application will be improved. 
 
+- [2.1: Behavior definition](#exercise-21-behavior-definition)
+- [2.2: Behavior implementation](#exercise-22-behavior-implementation)
+- [2.3: Metadata Extension](#exercise-23-metadata-extension)
+- [2.4: Test your changes](#exercise-24-test-your-changes)
+
 ## Exercise 2.1: Behavior definition
 [^Top of page](#exercise-2-adapt-the-generated-code)   
 
