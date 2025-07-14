@@ -658,7 +658,7 @@ When checking the source code of the *Service Consumption Provider Model* class 
   > e.g. the mapping of `PRODUCT_TYPE` to the Edm Name `ProductType`.
   >
 
-<pre>
+  ```ABAP
 
     lo_primitive_property = lo_entity_type->get_primitive_property( 'PRODUCT' ).
     lo_primitive_property->set_edm_name( 'Product' ) ##NO_TEXT.
@@ -678,7 +678,7 @@ When checking the source code of the *Service Consumption Provider Model* class 
     lo_primitive_property->set_max_length( 9 ) ##NUMBER_OK.
     lo_primitive_property->set_is_nullable( ).
   
-</pre>
+  ```
 
 </details>
 </details>
@@ -714,9 +714,9 @@ The custom entity can now be added as a value help.
 
    Add the annotation `@Consumption.valueHelpDefinition` to the field `ProductID`
   
-<pre>
+   ```ABAP
    @Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]  
-</pre>
+   ```
 
    This will add the custom entity `ZCE_PRODUCTS_###` as a value help for the field `ProductId`.
 
