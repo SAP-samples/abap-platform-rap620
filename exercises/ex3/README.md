@@ -338,8 +338,6 @@ ENDCLASS.
 
 </details>
 
-</details>
-
 ## Exercise 3.3: Create a custom entity and implement the query implementation class
 [^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
@@ -365,8 +363,7 @@ In order to be able to retrieve the data from the remote OData service we have t
 
 The interface **if_rap_query_provider interface** only offers one method which is called **select**. Within this select method we will call the public **get_products( )** method. The select method also expects that the incoming requests provide certain OData specific query parameters. These we will set in our coding as well.
 
-<details>
-<summary>Click to expand</summary>
+
 
 Let’s start with creating a new data definition `ZCE_PRODUCTS_###` using the template for a custom entity.
 
@@ -435,15 +432,13 @@ define custom entity ZCE_PRODUCTS_###
 
 > You might get the warning that the class ` ZCE_PRODUCTS_###` is not found. This is because our class does not yet implement the interface `IF_RAP_QUERY_PROVIDER`.  
 
-</details>
+
 
 ### Exercise 3.3.2: Implement the query implemenation class
 [^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
 
 After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance the query implementation class `ZCE_PRODUCTS_###` that we have created earlier in this exercise.
 
-<details>
-<summary>Click to expand</summary>
 
 1. Add interface **`IF_RAP_QUERY_PROVIDER`** to the query implementation class **`ZCL_CE_PRODUCTS_###`**
  
@@ -508,9 +503,7 @@ It is mandatory that the response not only contains the retrieved data via the m
 
 3. Activate your changes 
 
-</details>
 
-</details>
 
 ### Hints for creating the custom entity based on the type **`tys_sepmra_i_product_etype`**   
 [^Top of page](#exercise-3-consume-a-remote-api-based-on-an-odata-service)  
