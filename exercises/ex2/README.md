@@ -37,6 +37,10 @@ Open the behavior defintion `ZR_INVENTORY###` and add the field **InventoryID** 
 determination CalculateInventoryID on save { create; }
 ```
 
+  The code should now look like follows:   
+
+  ![Open Behavior Implementation](images/bdef_add_determination_0000.png)
+
 3. Save and activate your changes and proceed with the following section to maintain the behavior implementation.    
 
 > Once you have added the determination to the behavior definition you will get a warning that the determination is not implemented yet.
@@ -52,7 +56,7 @@ The behavior implementation class `ZBP_R_INVENTORY###` is automatically opened w
 The quick fix has added a method `CalculateInventoryID` with an (empty) implementation for the determination that shall calculate the semantic key InventoryID. 
 
 <details>
-  <summary>Click to expand the steps ...</summary>
+<summary>Click to expand the steps ...</summary>
 
 1. Click on the warning icon beside the **determination** statement.   
 
@@ -76,9 +80,9 @@ The quick fix has added a method `CalculateInventoryID` with an (empty) implemen
 
 
 
- <pre lang="ABAP"> 
+    ```ABAP
  
-  METHOD CalculateInventoryID.
+    METHOD CalculateInventoryID.
     " Ensure idempotence
     READ ENTITIES OF zr_inventory### IN LOCAL MODE
          ENTITY Inventory
@@ -106,15 +110,15 @@ The quick fix has added a method `CalculateInventoryID` with an (empty) implemen
 
     " fill reported
     reported = CORRESPONDING #( DEEP update_reported ).
-  ENDMETHOD.
+    ENDMETHOD.
  
-```
+    ```
    
- 5. Replace the placeholders <b>###</b> with your group number **(Ctrl+F)**.
+5. Replace the placeholders <b>###</b> with your group number **(Ctrl+F)**.
  
- 6. Activate your changes **(Ctrl+F3)**
+6. Activate your changes **(Ctrl+F3)**
 
-    ![Replace the placeholders](images/bil_replace_placeholders_0000.png)
+   ![Replace the placeholders](images/bil_replace_placeholders_0000.png)
 
 </details>
 
@@ -132,9 +136,9 @@ or
 Replace the generated code with the following code.
 
 <details>
-  <summary>Click to expand the source code snippet ...</summary>
+<summary>Click to expand the source code snippet ...</summary>
 
-  ```ABAP
+```ABAP
 @Metadata.layer: #CORE
 @UI.headerInfo.title.type: #STANDARD
 @UI.headerInfo.title.value: 'ProductId'
@@ -227,7 +231,7 @@ annotate view ZC_INVENTORY### with
   } ]
   OverallStatus;
   }
-  ```
+```
 
 </details>  
 
@@ -237,7 +241,7 @@ annotate view ZC_INVENTORY### with
 After having performed all the changes mentioned above we can use the SAP Fiori Elements preview in ADT to test our updated implementation.   
 
 <details>
-  <summary>Click to expand the steps ...</summary>
+<summary>Click to expand the steps ...</summary>
 
 1. Open the service binding **`ZRAP620_UI_INVENTOR_O4_###`**
 2. Start the SAP Fiori elements preview.
