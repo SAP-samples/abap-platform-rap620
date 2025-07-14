@@ -424,8 +424,6 @@ Let’s start with creating a new data definition `ZCE_PRODUCTS_###` using the t
 
    ```
 
-   [Source code ZCE_PRODUCTS_###](sources/ex2_DDLS_ZCE_RAP_PRODUCTS_%23%23%23%23.txt)
-
 7. Activate your changes ![Activate](images/activate.png)
 
 > You might get the warning that the class ` ZCE_PRODUCTS_###` is not found. This is because our class does not yet implement the interface `IF_RAP_QUERY_PROVIDER`.  
@@ -451,7 +449,7 @@ After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance
 2. Add the following types statement
 
    ```ABAP
-   TYPES t_business_data_external TYPE TABLE OF zce_products_###.
+   xTYPES t_business_data_external TYPE TABLE OF zce_products_###.
    ```
 
 2. Implement the method  `if_rap_query_provider~select`  
@@ -461,8 +459,7 @@ After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance
    > **Please note:**
    > It is mandatory that the response not only contains the retrieved data via the method `set_data()` but also the number of entities being returned via the method `set_total_number_of_records()`.
 
-   [Source code zcl_ce_rap_products_####](sources/ex2_CLAS_zcl_ce_rap_products_%23%23%23%23_step_2.txt)
-
+   
   ```ABAP
 
   METHOD if_rap_query_provider~select.

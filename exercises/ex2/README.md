@@ -19,7 +19,7 @@ Open the behavior defintion `ZR_INVENTORY###` and add the field **InventoryID** 
 
 1. Add **InventoryID** to the list of read-only fields:
 
-<pre>
+```ABAP
   field ( readonly )
    InventoryID, //semantic key
    Uuid,
@@ -28,14 +28,14 @@ Open the behavior defintion `ZR_INVENTORY###` and add the field **InventoryID** 
    LocalLastChangedBy,
    LocalLastChangedAt,
    LastChangedAt;
-</pre>
+```
 
 
 2. add the following line of code right before the mapping section.
 
-<pre>
+```ABAP
 determination CalculateInventoryID on save { create; }
-</pre>
+```
 
 3. Save and activate your changes and proceed with the following section to maintain the behavior implementation.    
 
@@ -108,7 +108,7 @@ The quick fix has added a method `CalculateInventoryID` with an (empty) implemen
     reported = CORRESPONDING #( DEEP update_reported ).
   ENDMETHOD.
  
-</pre>
+```
    
  5. Replace the placeholders <b>###</b> with your group number **(Ctrl+F)**.
  
@@ -134,7 +134,7 @@ Replace the generated code with the following code.
 <details>
   <summary>Click to expand the source code snippet ...</summary>
 
-  <pre>
+  ```ABAP
 @Metadata.layer: #CORE
 @UI.headerInfo.title.type: #STANDARD
 @UI.headerInfo.title.value: 'ProductId'
@@ -227,7 +227,7 @@ annotate view ZC_INVENTORY### with
   } ]
   OverallStatus;
   }
-  </pre>
+  ```
 
 </details>  
 

@@ -89,7 +89,7 @@ We will use a structure as a template for the **inventory** entity. Afterwards y
     6. **Save** and **Activate** your changes.    
     
 
-<pre> 
+```ABAP 
 @EndUserText.label : 'Inventory data template'
 @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
 define structure zrap620_inventory_### {
@@ -106,7 +106,7 @@ define structure zrap620_inventory_### {
   overall_status : abap.char(1);
 
 }
-</pre> 
+``` 
 
 </details>
 
@@ -143,7 +143,7 @@ define structure zrap620_inventory_### {
       ![Create table](images/create_table_0040.png)   
 
     
-<pre> 
+```ABAP 
 @EndUserText.label : 'Inventory data ###'
 @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
 @AbapCatalog.tableCategory : #TRANSPARENT
@@ -169,7 +169,7 @@ define table zrap620_inven### {
   local_last_changed_at : abp_lastchange_tstmpl;
 
 }
-</pre>
+```
 
 
 
