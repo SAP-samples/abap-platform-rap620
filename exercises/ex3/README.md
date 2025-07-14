@@ -714,9 +714,9 @@ The custom entity can now be added as a value help.
 
    Add the annotation `@Consumption.valueHelpDefinition` to the field `ProductID`
   
-   <pre>
-  @Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]  
-   </pre>
+<pre>
+   @Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]  
+</pre>
 
    This will add the custom entity `ZCE_PRODUCTS_###` as a value help for the field `ProductId`.
 
@@ -774,7 +774,7 @@ We can now test our service implementation.
    This is because we have add earlier the annotation `@Consumption.valueHelpDefinition` to the field `ProductID` with the addtional parameter `useForValidation`.
 
    <pre>
-@Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]        
+   @Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]        
    </pre>
 
    ![Input validation](images/preview_service_0030.png)
