@@ -86,7 +86,8 @@ We will use a structure as a template for the **inventory** entity. Afterwards y
 
    ![Create structure](images/create_structure_0020.png)   
 
-    6. **Save** and **Activate** your changes.    
+   6. **Save** and **Activate** your changes.    
+      
     
 
 ```ABAP 
