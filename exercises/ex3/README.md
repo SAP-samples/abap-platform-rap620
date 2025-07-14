@@ -201,7 +201,7 @@ This is a useful additional step since this way it is easier to check whether th
 
    So the `DEFINITION` section of your class should now look like follows:
 
-   <pre>
+<pre>
     CLASS zcl_ce_products_### DEFINITION
      PUBLIC
      FINAL
@@ -227,8 +227,7 @@ This is a useful additional step since this way it is easier to check whether th
     PROTECTED SECTION.
     PRIVATE SECTION.
     ENDCLASS.
-
-   </pre>
+</pre>
 
    You will get a warning that the method **get_products( )** has not been implemented yet. Press **Ctrl+1** to start the quick fix to add an implementation for **get_products( )**.
 
