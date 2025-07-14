@@ -714,15 +714,15 @@ The custom entity can now be added as a value help.
 
 1. Open the projection view for your inventory data `ZC_INVENTORY###` 
 
-  -  Add the annotation `@Consumption.valueHelpDefinition` to the field `ProductID`
+   Add the annotation `@Consumption.valueHelpDefinition` to the field `ProductID`
   
-     <pre>
+   <pre>
   @Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]  
-     </pre>
+   </pre>
 
-This will add the custom entity `ZCE_PRODUCTS_###` as a value help for the field `ProductId`.
+   This will add the custom entity `ZCE_PRODUCTS_###` as a value help for the field `ProductId`.
 
-![Add custom entity as a value help](images/projection_view_0000.png)  
+   ![Add custom entity as a value help](images/projection_view_0000.png)  
 
 </details>
 
@@ -775,9 +775,9 @@ We can now test our service implementation.
 
    This is because we have add earlier the annotation `@Consumption.valueHelpDefinition` to the field `ProductID` with the addtional parameter `useForValidation`.
 
-<pre>
+   <pre>
 @Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]        
-</pre>
+   </pre>
 
    ![Input validation](images/preview_service_0030.png)
 
