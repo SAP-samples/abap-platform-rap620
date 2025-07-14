@@ -1,4 +1,4 @@
-[Home - RAP100](../../#exercises)
+[Home - RAP620](../../#exercises)
 
 # Adapt the generated code
 

@@ -1,6 +1,6 @@
 # TOC
-[Home](../../readme.md#exercises)
-# Generate UI Service from scratch
+[Home - RAP620](../../#exercises)
+# Exercise 1: Generate UI Service from scratch
 
 ## Introduction
 
