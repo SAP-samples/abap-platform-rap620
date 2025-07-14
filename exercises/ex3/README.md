@@ -202,19 +202,18 @@ This is a useful additional step since this way it is easier to check whether th
    So the `DEFINITION` section of your class should now look like follows:
 
    <pre>
+    CLASS zcl_ce_products_### DEFINITION
+     PUBLIC
+     FINAL
+     CREATE PUBLIC .
 
-   CLASS zcl_ce_products_### DEFINITION
-   PUBLIC
-   FINAL
-   CREATE PUBLIC .
+     PUBLIC SECTION.
+     INTERFACES if_oo_adt_classrun.
 
-   PUBLIC SECTION.
-    INTERFACES if_oo_adt_classrun.
+     TYPES t_product_range TYPE RANGE OF zsc_products_###=>tys_a_clfn_product_type.
+     TYPES t_business_data TYPE zsc_products_###=>tyt_a_clfn_product_type.
 
-    TYPES t_product_range TYPE RANGE OF zsc_products_###=>tys_a_clfn_product_type.
-    TYPES t_business_data TYPE zsc_products_###=>tyt_a_clfn_product_type.
-
-    METHODS get_products
+     METHODS get_products
       IMPORTING filter_conditions TYPE if_rap_query_filter=>tt_name_range_pairs OPTIONAL
                 !top              TYPE i                                        OPTIONAL
                 !skip             TYPE i                                        OPTIONAL
@@ -225,9 +224,9 @@ This is a useful additional step since this way it is easier to check whether th
                 cx_http_dest_provider_error.
 
 
-   PROTECTED SECTION.
-   PRIVATE SECTION.
-   ENDCLASS.
+    PROTECTED SECTION.
+    PRIVATE SECTION.
+    ENDCLASS.
 
    </pre>
 
@@ -249,7 +248,7 @@ This is a useful additional step since this way it is easier to check whether th
 
    <pre>
 
-   METHOD get_products.
+    METHOD get_products.
     DATA filter_factory     TYPE REF TO /iwbep/if_cp_filter_factory.
     DATA filter_node        TYPE REF TO /iwbep/if_cp_filter_node.
     DATA root_filter_node   TYPE REF TO /iwbep/if_cp_filter_node.
@@ -299,7 +298,7 @@ This is a useful additional step since this way it is easier to check whether th
     " Execute the request and retrieve the business data
     read_list_response = read_list_request->execute( ).
     read_list_response->get_business_data( IMPORTING et_business_data = business_data ).
-   ENDMETHOD.
+    ENDMETHOD.
 
 
    </pre>
@@ -309,7 +308,7 @@ This is a useful additional step since this way it is easier to check whether th
    The main method creates a simple filter for products with a name greater or equal **TG11**. At the same time we use client side paging to skip the first result and limit the response to 3 products.
 
    <pre>
-  METHOD if_oo_adt_classrun~main.
+    METHOD if_oo_adt_classrun~main.
 
     DATA business_data     TYPE t_business_data.
     DATA filter_conditions TYPE if_rap_query_filter=>tt_name_range_pairs.
@@ -327,7 +326,7 @@ This is a useful additional step since this way it is easier to check whether th
       CATCH cx_root INTO DATA(exception).
         out->write( cl_message_helper=>get_latest_t100_exception( exception )->if_message~get_longtext( ) ).
     ENDTRY.
-  ENDMETHOD.
+    ENDMETHOD.
    </pre>
 
 
