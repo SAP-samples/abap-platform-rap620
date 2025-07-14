@@ -716,9 +716,9 @@ The custom entity can now be added as a value help.
 
   -  Add the annotation `@Consumption.valueHelpDefinition` to the field `ProductID`
   
-  <pre>
+     <pre>
   @Consumption.valueHelpDefinition: [{ entity : {name: 'ZCE_PRODUCTS_###', element: 'Product'  } , useForValidation: true }]  
-  </pre>
+     </pre>
 
 This will add the custom entity `ZCE_PRODUCTS_###` as a value help for the field `ProductId`.
 
