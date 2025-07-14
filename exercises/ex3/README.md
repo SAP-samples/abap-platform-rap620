@@ -406,20 +406,20 @@ Let’s start with creating a new data definition `ZCE_PRODUCTS_###` using the t
    - From the remote OData service that is used by the service consumption model we only use the following three fields for your value help: `Product`, `ProductType` and `ProductGroup`.
    - We add the annotation `@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_PRODUCTS_###'` right before the `define custom entity` statement.
 
-    The DDL source code should now look like follows:  
+   The DDL source code should now look like follows:  
 
    ```ABAP
-@EndUserText.label: 'Custom entity for products from S4'
-@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_PRODUCTS_###'
-define custom entity ZCE_PRODUCTS_###
-// with parameters parameter_name : parameter_type
-{
-  key Product             : abap.char( 40 );
+   @EndUserText.label: 'Custom entity for products from S4'
+   @ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_PRODUCTS_###'
+   define custom entity ZCE_PRODUCTS_###
+   // with parameters parameter_name : parameter_type
+   {
+      key Product             : abap.char( 40 );
       //Property name must not be ProductType 
       ProductTypeName         : abap.char( 4 );
       ProductGroupName        : abap.char( 9 );  
  
-}
+   }
 
 
    ```
@@ -443,7 +443,7 @@ After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance
    - You can use the quick fix `Ctrl+1` to add the implementation for the method `if_rap_query_provider~select`
   
    ```ABAP
-  INTERFACES if_rap_query_provider.
+   INTERFACES if_rap_query_provider.
    ```
   
   ![Add interface IF_RAP_QUERY_PROVIDER](images/query_implementation_0010.png)
@@ -451,7 +451,7 @@ After having created the custom entity `ZCE_PRODUCTS_###` we now have to enhance
 2. Add the following types statement
 
    ```ABAP
-  TYPES t_business_data_external TYPE TABLE OF zce_products_###.
+   TYPES t_business_data_external TYPE TABLE OF zce_products_###.
    ```
 
 2. Implement the method  `if_rap_query_provider~select`  
