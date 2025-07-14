@@ -45,9 +45,10 @@ Our scenario is an inventory application that runs on SAP BTP ABAP environment. 
 
  For that, you will build a custom business object with RAP to manage inventory data. The product data is being retrieved from a shared SAP S/4HANA public cloud system using the following remote enabled API [Product Master Data Including Classification - Read - Service](https://api.sap.com/api/API_CLFN_PRODUCT_SRV/overview).  
  
- To speed up the development we will use a wizard in ADT that generates the complete stack of a RAP business object based on a single existing table. This allows us to skip writing lots of boiler plate coding that you otherwise would have to write yourself.   
+ To speed up the development we will use a wizard in ADT that generates the complete stack of a RAP business object based including a table. The fields that should be part of the entities can be taken from existing structures, tables, cds views, etc. that are used as a template.  
+ This allows us to skip writing lots of boiler plate coding that you otherwise would have to write yourself.   
   
- The product data is being retrieved from a shared SAP S/4HANA public cloud backend system using the OData Service [Product Master Data Including Classification - Read - Service](https://api.sap.com/api/API_CLFN_PRODUCT_SRV/overview). When using your own SAP S/4HANA cloud syste you would be able to consume other remote APIs based on the protocols OData, SOAP, RFC(only private cloud or on premise systems).
+ The product data is being retrieved from a shared SAP S/4HANA public cloud backend system using the OData Service [Product Master Data Including Classification - Read - Service](https://api.sap.com/api/API_CLFN_PRODUCT_SRV/overview). When using your own SAP S/4HANA cloud system you would be able to consume other remote APIs based on the protocols OData, SOAP, RFC (only private cloud or on premise systems).
  
 You’ll enhance the generated application by enriching it with additonal UI annotations, and display it in a SAP Fiori elements based List Report.   
 
