@@ -1,6 +1,6 @@
 # TOC
-[Home](../../readme.md#exercises)
-# Consume a remote API based on an OData service
+[Home - RAP620](../../#exercises)
+# Exercise 3: Consume a remote API based on an OData service
 
 ## Introduction
 

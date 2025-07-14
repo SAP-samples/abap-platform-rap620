@@ -1,6 +1,6 @@
 [Home - RAP620](../../#exercises)
 
-# Adapt the generated code
+# Exercise 2: Adapt the generated code
 
 In this exercise we will perform changes to the generated code so that our generated application will be improved. 
 
