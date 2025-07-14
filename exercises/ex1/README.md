@@ -23,7 +23,7 @@ We will use a structure as a template for the **inventory** entity. Afterwards y
 > When creating your package **`ZRAP620_###`** you will see which unique ID is still available.      
 
 ## Exercise 1.1: Create Package
-[^Top of page](#)
+[^Top of page](#exercise-1-generate-ui-service-from-scratch)
 
 > Create your exercise package ![package](images/adt_package.png).   
 >
@@ -60,7 +60,7 @@ We will use a structure as a template for the **inventory** entity. Afterwards y
 </details>
 
 ## Exercise 1.2: Create structure   
-[^Top of page](#)    
+[^Top of page](#exercise-1-generate-ui-service-from-scratch)    
 
 > Create a structure that serves as a template for the inventory entity
 > An Inventory entity defines general inventory data, such as the inventory ID or product name, quantity of the product, and the price of the product.
@@ -182,7 +182,7 @@ define table zrap620_inven### {
 -->
 
 ## Exercise 1.3: Generate the transactional UI service
-[^Top of page](#)
+[^Top of page](#exercise-1-generate-ui-service-from-scratch)
 
 > Create your OData v4 based UI services with the built-in _from scratch generator_ in ADT.   
 > The generated business service will be transactional, draft-enabled, and enriched with UI semantics for the generation of the Fiori elements app.
@@ -277,7 +277,7 @@ define table zrap620_inven### {
 
 
 ## Exercise 1.4: Preview the Inventory App
-[^Top of page](#)
+[^Top of page](#exercise-1-generate-ui-service-from-scratch)
 
 > Publish the local service endpoint of your service binding ![service binding](images/adt_srvb.png) **`ZUI_INVENTORY_O4###`** and start the _Fiori elements App Preview_.
 
@@ -316,7 +316,7 @@ define table zrap620_inven### {
 </details>
 
 ## Summary 
-[^Top of page](#)
+[^Top of page](#exercise-1-generate-ui-service-from-scratch)
 
 Now that you've... 
 - created an ABAP package,
@@ -328,7 +328,6 @@ you can continue with the next exercise - **[Exercise 2: Adapt the generated cod
 
 ---
 
-## Appendix
-[^Top of page](#)
+
 
 
