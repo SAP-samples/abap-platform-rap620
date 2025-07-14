@@ -691,8 +691,13 @@ We now have to add the custom entity to the service definition of our inventory 
 1. Open the Service Definition `ZUI_INVENTORY_O4###` 
 
    - add the statement  
-     ```ABAPexpose ZCE_PRODUCTS_### as Product;```  
+
+     ```ABAP
+     expose ZCE_PRODUCTS_### as Product;   
+     ```  
+
      so that the custom entity is added to the OData service.  
+     
    - Activate your changes ![Activate](images/activate.png)
  
   ![Add custom entity to service definition](images/service_definition_0000.png)  
