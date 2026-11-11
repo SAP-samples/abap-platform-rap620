@@ -50,7 +50,9 @@ For RFC function modules the metadata file is created in the backend using the t
 Using these objects you will be able to write ABAP code that lets you consume remote OData services, SOAP services or RFC function modules.
 
 > ⚠️ Please note
-> The shared SAP S/4HANA public cloud demo system that is used in this case only allows to use a few services that are part of this demo scripts. In order to have access to a full blown SAP S/4HANA public cloud system please check out this [link](https://www.sap.com/products/erp/s4hana/trial.html).    
+> The shared SAP S/4HANA public cloud demo system that is used in this case only allows to use a few services that are part of this demo scripts.  
+> You can perform the same exercise using your own system landscape (e.g. your own SAP S/4HANA Public or Private Cloud system and your own SAP Business AI Platform, ABAP Environment) provided you have setup the necessary connection between these systems.
+
 
 <details>
 <summary>Click to expand</summary>
